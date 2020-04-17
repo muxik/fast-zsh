@@ -116,11 +116,19 @@ alias e-sd="sudo systemctl disable"
 alias ss="systemctl status"
 
 # git 相关
+alias g="git init"
+alias g-c="git clone"
 alias g-a="git add"
 alias g-cm="git commit -m"
 alias g-p="git push"
 alias g-lo="git log --oneline"
 alias g-s="git status"
+alias g-r="git reset --hard"
+alias g-b="git branch"
+alias g-c="git checkout"
+alias g-m="git merge"
+alias g-t="git tag"
+
 
 
 plugins=(git)
