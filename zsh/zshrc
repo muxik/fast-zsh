@@ -98,13 +98,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+#环境变量
+source $HOME/.profile 
 
 
 # 命令别名
 alias s="screenfetch"
 alias ra="ranger"
 alias rm="rm -i"
-
+alias pkg="sudo pacman"
 # /bin
 alias q="exit"
 
