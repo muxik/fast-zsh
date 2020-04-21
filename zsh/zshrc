@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 
 #环境变量
 source $HOME/.profile 
-
+export G=$HOME/work/bin
 
 # 命令别名
 alias s="screenfetch"
@@ -114,7 +114,7 @@ alias q="exit"
 alias s-ss="sudo systemctl start"
 alias s-sr="sudo systemctl restart"
 alias s-se="sudo systemctl enable"
-alias e-sd="sudo systemctl disable"
+alias s-sd="sudo systemctl disable"
 alias ss="systemctl status"
 
 # git 相关
