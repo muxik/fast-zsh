@@ -9,7 +9,8 @@ export ZSH="/home/muxik/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="ys"
+ZSH_THEME="muxi_k"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -25,7 +26,7 @@ CASE_SENSITIVE="true"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
@@ -105,10 +106,12 @@ export G=$HOME/work/bin
 # 命令别名
 alias s="screenfetch"
 alias ra="ranger"
-alias rm="rm -i"
-alias pkg="sudo pacman"
+
 # /bin
 alias q="exit"
+alias c="clear"
+alias pkg="sudo pacman"
+alias rm="rm -i"
 
 # systemctl
 alias s-ss="sudo systemctl start"
@@ -133,18 +136,14 @@ alias g-t="git tag"
 
 
 
-plugins=(git)
-plugins=(git zsh-autosuggestions)
-plugins=(git zsh-syntax-highlighting)
+plugins=(
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
 
 
-# 自动补全
-autoload -U compinit
-compinit
-# source ~/.oh-my-zsh/plugins/incr/incr*.zsh
-# plugins=(git zsh-autosuggestions)
-
-figlet Muxi_K 
-
-echo "\n主人，欢迎回来！ (▼ _ ▼ )\n" 
-date
+toilet -f mono12 muxi_k 
+cowsay "Muxi_k，欢迎回来！ (▼ _ ▼ )" 
+date  
+echo " --------------------------------------- "

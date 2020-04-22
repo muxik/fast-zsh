@@ -20,11 +20,12 @@ if [ $? -ne 0 ] ;then
     echo "Info: 更改成功！"
 fi
 
-type git > /dev/null && type figlet > /dev/null 
+type git > /dev/null && type toilet > /dev/null && cowsay
 
 if [ $? -ne 0 ] ;then
     sudo pacman -S git > /dev/null
-    sudo pacman -S figlet > /dev/null
+    sudo pacman -S noilet > /dev/null
+    sudo pacamn -S cowsay > /dev/null 
 fi
 
 chmod +x ./oh-my-zsh.sh
