@@ -23,8 +23,8 @@ chsh -s /bin/zsh > /dev/null && clear
 
 # install oh-my-zsh
 echo -e "\e[1;33mInfo: 正在安装 oh-my-zsh ! \e[0m"
-chmod +x ./oh-my-zsh.sh 
-sh -c ./oh-my-zsh.sh > /dev/null && clear 
+chmod +x ./script/oh-my-zsh.sh  
+sh -c ./script > /dev/null && clear 
 
 echo -e "\e[1;32mInfo: oh-my-zsh 安装完成 !"
 
