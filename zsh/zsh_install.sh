@@ -1,37 +1,42 @@
-# /usr/bin/sh
+#!/bin/bash
 
-type zsh > /dev/null
+ping baidu.com -c 2 > /dev/null
 
 if [ $? -ne 0 ] ;then
-    echo "Info: 正在安装zsh"
-    sudo pacman -S zsh > /dev/null
-    if [ $? -ne 0 ];then
-        echo "Error: 安装失败,请检查当前连接"
-    else 
-        echo "Info: zsh安装完成！"
-    fi
-else
-    echo "Info: zsh 已经安装"
+    clear
+    echo -e "\e[1;31mError: 当前网络不可用\e[0m" && exit
 fi
 
-echo "Info: 更换默认用户默认shell"
-chsh -s /bin/zsh > /dev/null
+
+type git    > /dev/null && \
+type toilet > /dev/null && \
+type cowsay > /dev/null && \
+type zsh    > /dev/null
+
 if [ $? -ne 0 ] ;then 
-    echo "Info: 更改成功！"
+    sudo pacman -S zsh git toilet cowsay --noconfirm && clear
+    echo -e "\e[1;32mInfo: 基本软件安装完成! \e[0m" 
 fi
 
-type git > /dev/null && type toilet > /dev/null && cowsay
+echo -e "\e[1;33mInfo: 更换默认shell\e[0m"
+chsh -s /bin/zsh > /dev/null && clear 
 
-if [ $? -ne 0 ] ;then
-    sudo pacman -S git > /dev/null
-    sudo pacman -S noilet > /dev/null
-    sudo pacamn -S cowsay > /dev/null 
-fi
+# install oh-my-zsh
+echo -e "\e[1;33mInfo: 正在安装 oh-my-zsh ! \e[0m"
+chmod +x ./oh-my-zsh.sh 
+sh -c ./oh-my-zsh.sh > /dev/null && clear 
 
-chmod +x ./oh-my-zsh.sh
-echo "Info:正在安装oh-my-zsh,请勿退出..."
-sh -c ./oh-my-zsh.sh > /dev/null
+echo -e "\e[1;32mInfo: oh-my-zsh 安装完成 !"
 
-cat ./zshrc > ~/.zshrc 
-echo "Info: 配置完成"; echo "done."
-exec zsh
+# import config
+cat ./zshrc > $HOME/.zshrc 
+echo -e "\e[1;32mInfo: 导入配置成功！\e[0m"
+
+# deploy plugins 
+echo -e "\e[1;33mInfo: 正在导入插件\e[0m"
+cp -r ./plugins $HOME && rename $HOME/plugins $HOME/.zsh $HOME/plugins
+
+# install end 
+echo -e "\e[1;32mInfo: 配置完成!\ndone." && exec zsh
+
+
