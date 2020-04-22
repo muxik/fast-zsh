@@ -9,7 +9,6 @@ export ZSH="/home/muxik/.oh-my-zsh"
 # zsh theme 
 # ZSH_THEME="robbyrussell"
 
-
 # pure theme
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
@@ -116,7 +115,7 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 alias s="screenfetch"
 alias ra="ranger"
 alias py="python3"
-alias py2="python"
+alias py2="python2"
 alias mysql="mysql -uroot -p"
 
 # system comand
@@ -148,6 +147,23 @@ alias g-t="git tag"
 
 # print 
 toilet -f mono12 muxi_k 
-cowsay "Muxi_k，欢迎回来！ (▼ _ ▼ )" ; date 
-echo " --------------------------------------- "
 
+hour=$(date +"%H")
+
+case $hour in
+    06|07|08) cowsay "早上好,今天也要努力哦!"
+    ;;
+    09|10|11|12) cowsay "上午好, 快去吃饭吧!"
+    ;;
+    13|14|15|16|17|18) cowsay "下午好, 在干嘛呢?"
+    ;;
+    18|19|20|21|22|23) cowsay "晚上好,念念不忘,必有回响!"
+    ;;
+    00|01|03|04|05) cowsay "凌晨了，在忙什么呢?"
+    ;;
+esac
+
+# cowsay "Muxi_k，欢迎回来！ (▼ _ ▼ )" 
+
+echo "当前时间: $(date +"%Y-%m-%d %H:%M:%S")" 
+echo " --------------------------------------- "
