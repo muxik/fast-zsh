@@ -151,6 +151,30 @@ alias g-c="git checkout"
 alias g-m="git merge"
 alias g-t="git tag"
 
+# 文件管理器的快捷键绑定 Alt+Up 让用户进入上层目录  Alt+Left 让用户撤销最近的 cd 操作
+cdUndoKey() {
+  popd      > /dev/null
+  zle       reset-prompt
+  echo
+  ls
+  echo
+}
+
+cdParentKey() {
+  pushd .. > /dev/null
+  zle      reset-prompt
+  echo
+  ls
+  echo
+}
+
+zle -N                 cdParentKey
+zle -N                 cdUndoKey
+bindkey '^[[1;3A'      cdParentKey
+bindkey '^[[1;3D'      cdUndoKey
+
+
+
 # 问候
 toilet -f ascii12 Muxi_k --gay -t
 
@@ -182,5 +206,7 @@ rand_cowsay_forture () {
 rand_cowsay_forture
 
 echo -e "\e[1;31m当前时间: $(date +"%Y-%m-%d %H:%M:%S" | toilet -f wideterm --gay -t)\e[0m" 
-for i in `seq 33`;printf '-' && sleep 0.01;
+for i in `seq 33`
+    printf '-' 
+    sleep 0.01;
 
