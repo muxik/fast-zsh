@@ -1,6 +1,6 @@
 #|-----------------------|
 #| author: muxi_k        |
-#| date  : 2020-4-22     |
+#| date  : 2020-4-23     |
 #|-----------------------|
 
 # Path to your oh-my-zsh installation.
@@ -89,8 +89,14 @@ plugins=(
 )
 
 # source file 
-source $ZSH/oh-my-zsh.sh
-source $HOME/.profile
+source $ZSH/oh-my-zsh.sh 
+
+# my profile 
+ls $HOME/.profile > /dev/null 
+
+if [ $? -eq 0 ] ;then    
+    source $HOME/.profile
+fi 
 
 # go bin
 PATH=$PATH:$GOPATH/bin 
@@ -98,7 +104,7 @@ PATH=$PATH:$GOPATH/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # language environment
-export LANG=zh_CN.UTF-8
+# export LANG=zh_CN.UTF-8
 
 
 # default editor
@@ -107,7 +113,7 @@ EDITOR=/usr/bin/vim
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# alias list
+# alias list 别名
 alias zshconfig="source ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
@@ -145,25 +151,36 @@ alias g-c="git checkout"
 alias g-m="git merge"
 alias g-t="git tag"
 
-# print 
-toilet -f mono12 muxi_k 
+# 问候
+toilet -f ascii12 Muxi_k --gay -t
 
 hour=$(date +"%H")
+me='Muxi_k'
 
+# 通过不同时间问候不同句子
 case $hour in
-    06|07|08) cowsay "早上好,今天也要努力哦!"
-    ;;
-    09|10|11|12) cowsay "上午好, 快去吃饭吧!"
-    ;;
-    13|14|15|16|17|18) cowsay "下午好, 在干嘛呢?"
-    ;;
-    18|19|20|21|22|23) cowsay "晚上好,念念不忘,必有回响!"
-    ;;
-    00|01|03|04|05) cowsay "凌晨了，在忙什么呢?"
+    06|07|08)          message="\e[1;36m$me 早上好! 清晨的第一缕阳光送给你\e[0m"
+    ;;                 
+    09|10|11|12)       message="\e[1;32m$me 上午好! 快去吃饭吧!\e[0m"
+    ;;                 
+    13|14|15|16|17|18) message="\e[1;33m$me 下午好! 在干嘛呢?\e[0m"
+    ;;                  
+    18|19|20|21|22|23) message="\e[1;35m$me 晚上好! 夜里的风凉吗?\e[0m"
+    ;;                 
+    00|01|03|04|05)    message="\e[1;38m$me 凌晨了! 在忙什么呢?\e[0m"
     ;;
 esac
 
-# cowsay "Muxi_k，欢迎回来！ (▼ _ ▼ )" 
+# cowsay 随机图像
+rand_cowsay_forture () {
+    local cowsay_list=(`cowsay -l | tail -n +2`);
+    local cowsay_picture=$[ $RANDOM % ${#cowsay_list[@]} ];
+    printf  $message | cowsay -f ${cowsay_list[$cowsay_picture]};
+}
 
-echo "当前时间: $(date +"%Y-%m-%d %H:%M:%S")" 
-echo " --------------------------------------- "
+# cowsay $message
+rand_cowsay_forture
+
+echo -e "\e[1;31m当前时间: $(date +"%Y-%m-%d %H:%M:%S" | toilet -f wideterm --gay -t)\e[0m" 
+for i in `seq 33`;printf '-' && sleep 0.01;
+
