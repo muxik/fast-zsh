@@ -175,11 +175,15 @@ bindkey '^[[1;3D'      cdUndoKey
 
 
 
+
+
 # 问候
-toilet -f ascii12 Muxi_k --gay -t
+
+me='Muxi_k'
+
+toilet -f ascii12 $me --gay -t
 
 hour=$(date +"%H")
-me='Muxi_k'
 
 # 通过不同时间问候不同句子
 case $hour in
