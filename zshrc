@@ -4,7 +4,7 @@
 #|-----------------------|
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/muxik/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # zsh theme 
 # ZSH_THEME="robbyrussell"
