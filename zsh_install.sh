@@ -34,7 +34,7 @@ echo -e "\e[1;32mInfo: 导入配置成功！\e[0m"
 
 # deploy plugins 
 echo -e "\e[1;33mInfo: 正在导入插件\e[0m"
-cp -r ./plugins $HOME && rename $HOME/plugins $HOME/.zsh $HOME/plugins
+sudo cp -r ./plugins $HOME && rename $HOME/plugins $HOME/.zsh $HOME/plugins
 
 # install end 
 echo -e "\e[1;32mInfo: 配置完成!\ndone." && exec zsh
