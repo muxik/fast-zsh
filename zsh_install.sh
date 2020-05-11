@@ -39,4 +39,4 @@ sudo cp -r ./plugins $HOME && rename $HOME/plugins $HOME/.zsh $HOME/plugins
 # install end 
 echo -e "\e[1;32mInfo: 配置完成!\ndone." && exec zsh
 
-
+ 
