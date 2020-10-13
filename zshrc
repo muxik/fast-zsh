@@ -1,7 +1,8 @@
-#|-----------------------|
-#| author: muxi_k        |
-#| date  : 2020-4-23     |
-#|-----------------------|
+#|------------------------|
+#| Author: muxi_k         |
+#| Date  : 2020-10-13     |
+#|------------------------|
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -28,7 +29,7 @@ CASE_SENSITIVE="true"
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 DISABLE_UPDATE_PROMPT="true"
@@ -58,7 +59,6 @@ ENABLE_CORRECTION="true"
 
 
 # history command option
-HIST_STAMPS="yyyy/mm/dd"
 
 HISTFILESIZE=1000000
 
@@ -91,13 +91,6 @@ plugins=(
 # source file 
 source $ZSH/oh-my-zsh.sh 
 
-# my profile 
-ls $HOME/.profile > /dev/null 
-
-if [ $? -eq 0 ] ;then    
-    source $HOME/.profile
-fi 
-
 # go bin
 PATH=$PATH:$GOPATH/bin 
 
@@ -118,11 +111,14 @@ alias zshconfig="source ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # user command
-alias s="screenfetch"
+alias s="neofetch"
 alias ra="ranger"
 alias py="python3"
 alias py2="python2"
 alias mysql="mysql -uroot -p"
+alias vi="/usr/bin/vim"
+alias vim="nvim"
+alias ls="lsd"
 
 # system comand
 alias q="exit"
@@ -132,6 +128,7 @@ alias rm="rm -i"
 
 # systemctl
 alias s-ss="sudo systemctl start"
+alias s-st="sudo systemctl stop"
 alias s-sr="sudo systemctl restart"
 alias s-se="sudo systemctl enable"
 alias s-sd="sudo systemctl disable"
@@ -143,7 +140,8 @@ alias g-c="git clone"
 alias g-a="git add"
 alias g-cm="git commit -m"
 alias g-p="git push"
-alias g-lo="git log --oneline"
+alias g-lo="git log"
+alias g-loo="git log --oneline"
 alias g-s="git status"
 alias g-r="git reset --hard"
 alias g-b="git branch"
@@ -172,8 +170,6 @@ zle -N                 cdParentKey
 zle -N                 cdUndoKey
 bindkey '^[[1;3A'      cdParentKey
 bindkey '^[[1;3D'      cdUndoKey
-
-
 
 
 

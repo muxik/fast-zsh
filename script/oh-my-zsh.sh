@@ -5,7 +5,7 @@ set -e
 # Default settings
 ZSH=${ZSH:-~/.oh-my-zsh}
 REPO=${REPO:-ohmyzsh/ohmyzsh}
-REMOTE=${REMOTE:-https://github.com/${REPO}.git}
+REMOTE=${REMOTE:-https://github.com.cnpmjs.org/${REPO}.git}
 BRANCH=${BRANCH:-master}
 
 # Other options
@@ -70,46 +70,6 @@ setup_ohmyzsh() {
 		error "git clone of oh-my-zsh repo failed"
 		exit 1
 	}
-
-	echo
-}
-
-setup_zshrc() {
-	# Keep most recent old .zshrc at .zshrc.pre-oh-my-zsh, and older ones
-	# with datestamp of installation that moved them aside, so we never actually
-	# destroy a user's original zshrc
-	echo "${BLUE}Looking for an existing zsh config...${RESET}"
-
-	# Must use this exact name so uninstall.sh can find it
-	OLD_ZSHRC=~/.zshrc.pre-oh-my-zsh
-	if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
-		# Skip this if the user doesn't want to replace an existing .zshrc
-		if [ $KEEP_ZSHRC = yes ]; then
-			echo "${YELLOW}Found ~/.zshrc.${RESET} ${GREEN}Keeping...${RESET}"
-			return
-		fi
-		if [ -e "$OLD_ZSHRC" ]; then
-			OLD_OLD_ZSHRC="${OLD_ZSHRC}-$(date +%Y-%m-%d_%H-%M-%S)"
-			if [ -e "$OLD_OLD_ZSHRC" ]; then
-				error "$OLD_OLD_ZSHRC exists. Can't back up ${OLD_ZSHRC}"
-				error "re-run the installer again in a couple of seconds"
-				exit 1
-			fi
-			mv "$OLD_ZSHRC" "${OLD_OLD_ZSHRC}"
-
-			echo "${YELLOW}Found old ~/.zshrc.pre-oh-my-zsh." \
-				"${GREEN}Backing up to ${OLD_OLD_ZSHRC}${RESET}"
-		fi
-		echo "${YELLOW}Found ~/.zshrc.${RESET} ${GREEN}Backing up to ${OLD_ZSHRC}${RESET}"
-		mv ~/.zshrc "$OLD_ZSHRC"
-	fi
-
-	echo "${GREEN}Using the Oh My Zsh template file and adding it to ~/.zshrc.${RESET}"
-
-	sed "/^export ZSH=/ c\\
-export ZSH=\"$ZSH\"
-" "$ZSH/templates/zshrc.zsh-template" > ~/.zshrc-omztemp
-	mv -f ~/.zshrc-omztemp ~/.zshrc
 
 	echo
 }
@@ -181,15 +141,7 @@ setup_shell() {
 		grep "^$USER:" /etc/passwd | awk -F: '{print $7}' > ~/.shell.pre-oh-my-zsh
 	fi
 
-	# Actually change the default shell to zsh
-	if ! chsh -s "$zsh"; then
-		error "chsh command unsuccessful. Change your default shell manually."
-	else
-		export SHELL="$zsh"
-		echo "${GREEN}Shell successfully changed to '$zsh'.${RESET}"
-	fi
 
-	echo
 }
 
 main() {
@@ -225,7 +177,6 @@ main() {
 	fi
 
 	setup_ohmyzsh
-	setup_zshrc
 	setup_shell
 
 	if [ $RUNZSH = no ]; then

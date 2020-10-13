@@ -9,12 +9,16 @@ fi
 
 
 type git    > /dev/null && \
+type yay    > /dev/null && \
 type toilet > /dev/null && \
 type cowsay > /dev/null && \
-type zsh    > /dev/null
+type zsh    > /dev/null &&
+type lsd    > /dev/null 
 
 if [ $? -ne 0 ] ;then 
-    sudo pacman -S zsh git toilet cowsay --noconfirm && clear
+    sudo pacman -S zsh git yay cowsay --noconfirm && clear
+    sudo pacman -S yay --noconfirm
+    yay -S toilet
     echo -e "\e[1;32mInfo: 基本软件安装完成! \e[0m" 
 fi
 
@@ -34,9 +38,8 @@ echo -e "\e[1;32mInfo: 导入配置成功！\e[0m"
 
 # deploy plugins 
 echo -e "\e[1;33mInfo: 正在导入插件\e[0m"
-sudo cp -r ./plugins $HOME && rename $HOME/plugins $HOME/.zsh $HOME/plugins
+cp plugins ~/.zsh -r
 
 # install end 
-echo -e "\e[1;32mInfo: 配置完成!\ndone." && exec zsh
+echo -e "\e[1;32mInfo: 配置完成!\ndone." && sleep 1 && clear && exec zsh
 
- 
