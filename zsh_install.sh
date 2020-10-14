@@ -7,21 +7,12 @@ if [ $? -ne 0 ] ;then
     echo -e "\e[1;31mError: 当前网络不可用\e[0m" && exit
 fi
 
-
-type git    > /dev/null && \
-type yay    > /dev/null && \
-type cowsay > /dev/null && \
-type zsh    > /dev/null && \
-type lsd    > /dev/null && \
-type fortune > /dev/null 
-
-if [ $? -ne 0 ] ;then 
-    sudo pacman -S zsh git yay cowsay lsd fortune-mod --noconfirm && clear
+sudo pacman -S zsh git yay cowsay lsd fortune-mod --noconfirm && clear
     
-    echo -e "\e[1;32mInfo: 基本软件安装完成! \e[0m" 
-fi
+echo -e "\e[1;32mInfo: 基本软件安装完成! \e[0m" 
 
 echo -e "\e[1;33mInfo: 更换默认shell\e[0m"
+
 chsh -s /bin/zsh > /dev/null 
 
 # install oh-my-zsh
@@ -42,7 +33,5 @@ cp plugins ~/.zsh -r
 # install powerlevel10k
 git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-zsh -c "source ~/.zshrc; p10k configure"
-
 # install end 
-echo -e "\e[1;32mInfo: 配置完成!\ndone." && sleep 1
+echo -e "\e[1;32mInfo: 配置完成!\ndone." && sleep 1 && clear && exec zsh 
