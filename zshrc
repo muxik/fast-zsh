@@ -10,10 +10,12 @@ export ZSH="$HOME/.oh-my-zsh"
 # zsh theme 
 # ZSH_THEME="robbyrussell"
 
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
 # pure theme
-fpath+=$HOME/.zsh/pure
-autoload -U promptinit; promptinit
-prompt pure
+# fpath+=$HOME/.zsh/pure
+# autoload -U promptinit; promptinit
+# prompt pure
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -175,38 +177,44 @@ bindkey '^[[1;3D'      cdUndoKey
 
 # 问候
 
-me='Muxi_k'
-
-toilet -f ascii12 $me --gay -t
-
-hour=$(date +"%H")
-
+# me='Muxi_k'
+# 
+# toilet -f ascii12 $me --gay -t
+# 
+# hour=$(date +"%H")
+# 
 # 通过不同时间问候不同句子
-case $hour in
-    06|07|08)          message="\e[1;36m$me 早上好! 清晨的第一缕阳光送给你\e[0m"
-    ;;                 
-    09|10|11|12)       message="\e[1;32m$me 上午好! 快去吃饭吧!\e[0m"
-    ;;                 
-    13|14|15|16|17|18) message="\e[1;33m$me 下午好! 在干嘛呢?\e[0m"
-    ;;                  
-    18|19|20|21|22|23) message="\e[1;35m$me 晚上好! 夜里的风凉吗?\e[0m"
-    ;;                 
-    00|01|03|04|05)    message="\e[1;38m$me 凌晨了! 在忙什么呢?\e[0m"
-    ;;
-esac
-
+# case $hour in
+#     06|07|08)          message="\e[1;36m$me 早上好! 清晨的第一缕阳光送给你\e[0m"
+#     ;;                 
+#     09|10|11|12)       message="\e[1;32m$me 上午好! 快去吃饭吧!\e[0m"
+#     ;;                 
+#     13|14|15|16|17|18) message="\e[1;33m$me 下午好! 在干嘛呢?\e[0m"
+#     ;;                  
+#     18|19|20|21|22|23) message="\e[1;35m$me 晚上好! 夜里的风凉吗?\e[0m"
+#     ;;                 
+#     00|01|03|04|05)    message="\e[1;38m$me 凌晨了! 在忙什么呢?\e[0m"
+#     ;;
+# esac
+# 
 # cowsay 随机图像
-rand_cowsay_forture () {
-    local cowsay_list=(`cowsay -l | tail -n +2`);
-    local cowsay_picture=$[ $RANDOM % ${#cowsay_list[@]} ];
-    printf  $message | cowsay -f ${cowsay_list[$cowsay_picture]};
-}
+# rand_cowsay_forture () {
+#     local cowsay_list=(`cowsay -l | tail -n +2`);
+#     local cowsay_picture=$[ $RANDOM % ${#cowsay_list[@]} ];
+#     printf  $message | cowsay -f ${cowsay_list[$cowsay_picture]};
+# }
+# 
+# # cowsay $message
+# rand_cowsay_forture
+# 
+# echo -e "\e[1;31m当前时间: $(date +"%Y-%m-%d %H:%M:%S" | toilet -f wideterm --gay -t)\e[0m" 
+# for i in `seq 33`
+#     printf '-' 
+#     sleep 0.01;
 
-# cowsay $message
-rand_cowsay_forture
+echo "\n"
+fortune
+echo "\n"
 
-echo -e "\e[1;31m当前时间: $(date +"%Y-%m-%d %H:%M:%S" | toilet -f wideterm --gay -t)\e[0m" 
-for i in `seq 33`
-    printf '-' 
-    sleep 0.01;
-
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
