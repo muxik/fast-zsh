@@ -15,9 +15,7 @@ type zsh    > /dev/null &&
 type lsd    > /dev/null 
 
 if [ $? -ne 0 ] ;then 
-    sudo pacman -S zsh git yay cowsay lsd --noconfirm && clear
-    sudo pacman -S yay --noconfirm
-    yay -S toilet
+    sudo pacman -S zsh git yay cowsay lsd fortune-mod --noconfirm && clear
     
     echo -e "\e[1;32mInfo: 基本软件安装完成! \e[0m" 
 fi
