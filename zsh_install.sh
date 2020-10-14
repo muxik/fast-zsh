@@ -11,8 +11,9 @@ fi
 type git    > /dev/null && \
 type yay    > /dev/null && \
 type cowsay > /dev/null && \
-type zsh    > /dev/null &&
-type lsd    > /dev/null 
+type zsh    > /dev/null && \
+type lsd    > /dev/null && \
+type fortune > /dev/null 
 
 if [ $? -ne 0 ] ;then 
     sudo pacman -S zsh git yay cowsay lsd fortune-mod --noconfirm && clear
