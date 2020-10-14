@@ -10,20 +10,20 @@ fi
 
 type git    > /dev/null && \
 type yay    > /dev/null && \
-type toilet > /dev/null && \
 type cowsay > /dev/null && \
 type zsh    > /dev/null &&
 type lsd    > /dev/null 
 
 if [ $? -ne 0 ] ;then 
-    sudo pacman -S zsh git yay cowsay --noconfirm && clear
+    sudo pacman -S zsh git yay cowsay lsd --noconfirm && clear
     sudo pacman -S yay --noconfirm
     yay -S toilet
+    
     echo -e "\e[1;32mInfo: 基本软件安装完成! \e[0m" 
 fi
 
 echo -e "\e[1;33mInfo: 更换默认shell\e[0m"
-chsh -s /bin/zsh > /dev/null && clear 
+chsh -s /bin/zsh > /dev/null 
 
 # install oh-my-zsh
 echo -e "\e[1;33mInfo: 正在安装 oh-my-zsh ! \e[0m"
@@ -40,6 +40,10 @@ echo -e "\e[1;32mInfo: 导入配置成功！\e[0m"
 echo -e "\e[1;33mInfo: 正在导入插件\e[0m"
 cp plugins ~/.zsh -r
 
-# install end 
-echo -e "\e[1;32mInfo: 配置完成!\ndone." && sleep 1 && clear && exec zsh
+# install powerlevel10k
+git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
+zsh -c "source ~/.zshrc; p10k configure"
+
+# install end 
+echo -e "\e[1;32mInfo: 配置完成!\ndone." && sleep 1
