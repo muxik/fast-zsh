@@ -8,6 +8,7 @@
 
 - git
 - zsh
+- lsd (可选)
 - ~~cowsay~~
 - ~~toilet~~
 
