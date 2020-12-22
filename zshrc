@@ -1,6 +1,6 @@
 #|------------------------|
 #| Author: muxi_k         |
-#| Date  : 2020-12-16     |
+#| Date  : 2020-12-22     |
 #|------------------------|
 
 
@@ -121,13 +121,13 @@ alias mysql="mysql -uroot -p"
 alias vi="/usr/bin/vim"
 alias vim="nvim"
 alias svim="sudo nvim"
-alias ls="lsd"
 
 # system comand
 alias q="exit"
 alias c="clear"
 alias pkg="sudo pacman"
 alias rm="rm -i"
+! type lsd >/dev/null 2>&1 || { alias ls="lsd" }
 
 # systemctl
 alias s-ss="sudo systemctl start"

@@ -7,7 +7,8 @@ if [ $? -ne 0 ] ;then
     echo -e "\e[1;31mError: 当前网络不可用\e[0m" && exit
 fi
 
-sudo pacman -S zsh git yay cowsay lsd fortune-mod --noconfirm && clear
+# sudo pacman -S zsh git yay cowsay lsd fortune-mod --noconfirm && clear
+sudo pacman -S zsh git lsd fortune-mod --noconfirm && clear
     
 echo -e "\e[1;32mInfo: 基本软件安装完成! \e[0m" 
 
