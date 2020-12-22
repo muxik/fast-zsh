@@ -1,6 +1,6 @@
 #|------------------------|
 #| Author: muxi_k         |
-#| Date  : 2020-10-13     |
+#| Date  : 2020-12-16     |
 #|------------------------|
 
 
@@ -120,6 +120,7 @@ alias py2="python2"
 alias mysql="mysql -uroot -p"
 alias vi="/usr/bin/vim"
 alias vim="nvim"
+alias svim="sudo nvim"
 alias ls="lsd"
 
 # system comand
@@ -212,9 +213,9 @@ bindkey '^[[1;3D'      cdUndoKey
 #     printf '-' 
 #     sleep 0.01;
 
-echo "\n"
-fortune
-echo "\n"
+# echo "\n"
+# fortune
+# echo "\n"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

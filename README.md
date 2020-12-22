@@ -8,8 +8,8 @@
 
 - git
 - zsh
-- cowsay
-- toilet
+- ~~cowsay~~
+- ~~toilet~~
 
 > 这个脚本适用于Arch linux 衍生的发行版例如Manjaro.. 如果你是其他发行版请安装以上软件注释并且第17行
 
@@ -25,7 +25,13 @@ $ cd fast-zsh
 $ sudo chmod +x ./zsh_install.sh && ./zsh_install.sh
 ```
 
-## 如何改变问候语
+~~## 如何改变问候语~~
 
-请修改文件底部的变量`me`
+~~请修改文件底部的变量`me`~~
+
+## 更新公告
+
+
+
+> 12.22 更新了配置文件，修改了README,几乎兼容所有linux发行版
 
